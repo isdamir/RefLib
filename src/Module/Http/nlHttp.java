@@ -8,6 +8,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -32,6 +34,7 @@ public class nlHttp implements HttpI {
      * @param filename
      * @throws IOException
      */
+    @Override
     public boolean downData(String url, String filename) throws IOException {
         return downData(url, new File(filename));
     }
@@ -61,6 +64,7 @@ public class nlHttp implements HttpI {
      * @param file
      * @throws IOException
      */
+    @Override
     public boolean downData(String url, File file) throws IOException {
         URL Url = new URL(url);
         URLConnection Uc = Url.openConnection();
@@ -68,7 +72,7 @@ public class nlHttp implements HttpI {
         Uc.setReadTimeout(ReadTimeout);
         Uc.setConnectTimeout(ConnectTimeout);
         InputStream is = Uc.getInputStream();
-        int ch = 0;
+        int ch ;
         try {
             FileOutputStream os = new FileOutputStream(file);
             while ((ch = is.read(buffer, 0, 1024)) != -1) {
@@ -90,6 +94,7 @@ public class nlHttp implements HttpI {
      * @param filename
      * @throws IOException
      */
+    @Override
     public boolean downData(String url, String filed, String filename)
             throws IOException {
         return downData(url, filed, new File(filename));
@@ -103,10 +108,11 @@ public class nlHttp implements HttpI {
      * @param file
      * @throws IOException
      */
+    @Override
     public boolean downData(String url, String filed, File file)
             throws IOException {
         URL Url = new URL(url);
-        int ch = 0;
+        int ch ;
         URLConnection Uc = Url.openConnection();
             initHeader(Uc);
         Uc.setReadTimeout(ReadTimeout);
@@ -136,6 +142,7 @@ public class nlHttp implements HttpI {
      * @param url
      * @throws IOException
      */
+    @Override
     public boolean getData(String url, String[] result) {
         return getData(url, true, result);
     }
@@ -147,6 +154,7 @@ public class nlHttp implements HttpI {
      * @param ret
      * @throws IOException
      */
+    @Override
     public boolean getData(String url, Boolean ret, String[] result) {
         try {
             URL Url = new URL(url);
@@ -157,7 +165,7 @@ public class nlHttp implements HttpI {
             if (ret) {
                 InputStreamReader dis = new InputStreamReader(
                         Uc.getInputStream(), "UTF-8");
-                StringBuffer input = new StringBuffer();
+                StringBuilder input = new StringBuilder();
                 int ch;
                 while ((ch = dis.read()) != -1) {
                     input.append((char) ch);
@@ -185,6 +193,7 @@ public class nlHttp implements HttpI {
      * @param filed
      * @throws IOException
      */
+    @Override
     public boolean getData(String url, String filed, String[] result) {
         return getData(url, filed, true, result);
     }
@@ -197,6 +206,7 @@ public class nlHttp implements HttpI {
      * @param ret
      * @throws IOException
      */
+    @Override
     public boolean getData(String url, String filed, Boolean ret,
             String[] result) {
         try {
@@ -214,7 +224,7 @@ public class nlHttp implements HttpI {
             if (ret) {
                 InputStreamReader dis = new InputStreamReader(
                         Uc.getInputStream(), "UTF-8");
-                StringBuffer input = new StringBuffer();
+                StringBuilder input = new StringBuilder();
                 int ch;
                 while ((ch = dis.read()) != -1) {
                     input.append((char) ch);
@@ -242,6 +252,7 @@ public class nlHttp implements HttpI {
      * @param regex
      * @throws IOException
      */
+    @Override
     public boolean getFindRegexData(String url, String regex)
             throws IOException {
         Pattern p = null;
@@ -288,6 +299,7 @@ public class nlHttp implements HttpI {
      * @param regex
      * @throws IOException
      */
+    @Override
     public boolean getFindRegexData(String url, String filed, String regex)
             throws IOException {
         Pattern p = null;
@@ -339,6 +351,7 @@ public class nlHttp implements HttpI {
      * @param regex
      * @throws IOException
      */
+    @Override
     public boolean getRegexData(String url, String regex, String[] result) {
         try {
             Pattern p = null;
@@ -388,6 +401,7 @@ public class nlHttp implements HttpI {
      * @param regex
      * @throws IOException
      */
+    @Override
     public boolean getRegexData(String url, String filed, String regex,
             String[] result) {
         try {
@@ -441,6 +455,7 @@ public class nlHttp implements HttpI {
      *
      * @param ip
      */
+    @Override
     public void setProxy(String ip) {
         Properties prop = System.getProperties();
         String[] s = ip.split(":");
