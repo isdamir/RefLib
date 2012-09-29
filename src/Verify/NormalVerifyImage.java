@@ -88,6 +88,7 @@ public class NormalVerifyImage implements UserInterface, VerifyImage {
 	synchronized public String exec(File file) {
 		return exec(file.getAbsolutePath());
 	}
+                    //下载验证码图片并要求输入
 	synchronized public String DownLoadVerify(String url)
 	{
 		//下载到临时目录

@@ -61,7 +61,7 @@ public abstract class LogicBase implements Runnable {
 		this.tip = tu;
 		initEnd(ui);
 	}
-
+                
 	public void close() {
 		hi = null;
 		if (dr != null) {

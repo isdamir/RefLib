@@ -8,7 +8,7 @@ public class NetTool {
 		String[] result=new String[]{"",""};
 		if(httpI.getData("http://checkip.dyndns.org/", result))
 		{
-			Pattern pattern=Pattern.compile("(?<=Address ).+?(?=<)");
+			Pattern pattern=Pattern.compile("(?<=Address:).+?(?=<)");
 			java.util.regex.Matcher m=pattern.matcher(result[0]);
 			if(m.find())
 			{
