@@ -15,6 +15,9 @@ public class DataWriter {
 	public DataWriter(String filename) throws IOException {
 		this(new FileWriter(filename));
 	}
+                public DataWriter(String filename,boolean b) throws IOException {
+		this(new FileWriter(filename, b));
+	}
 
 	public DataWriter(FileWriter wr) {
 		w = new BufferedWriter(wr);

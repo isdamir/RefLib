@@ -75,6 +75,7 @@ public abstract class LogicBase implements Runnable {
 			}
 		}
 		Config.setValue("start", SysData.getSucceed()+SysData.getFaild());
+                Config.saveConfig();
 		closeOther();
 	}
 

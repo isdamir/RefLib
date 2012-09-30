@@ -162,6 +162,7 @@ public class nlHttp implements HttpI {
             initHeader(Uc);
             Uc.setReadTimeout(ReadTimeout);
             Uc.setConnectTimeout(ConnectTimeout);
+            Map<String,List<String>> m=Uc.getHeaderFields();
             if (ret) {
                 InputStreamReader dis = new InputStreamReader(
                         Uc.getInputStream(), "UTF-8");
