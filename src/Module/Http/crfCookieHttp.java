@@ -45,7 +45,7 @@ public final class crfCookieHttp extends nlHttp {
         }
     }
     CookieManager manager;
-    private void initCookie() {
+    public void initCookie() {
         manager = new CookieManager();
         CookieHandler.setDefault(manager);
         manager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);

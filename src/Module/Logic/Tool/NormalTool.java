@@ -11,7 +11,7 @@ public class NormalTool {
 	 * @return
 	 */
 	public static String Filteramp(String old) {
-		return old.replace("amp", "");
+		return old.replace("amp;", "");
 	}
 
 	/**
